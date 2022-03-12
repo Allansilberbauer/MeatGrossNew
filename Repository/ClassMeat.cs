@@ -28,7 +28,7 @@ namespace Repository
 
         public string strTimestamp
         {
-            get { return priceTimestamp.ToShortDateString(); }
+            get { return priceTimestamp.ToLongDateString(); }
             set
             {
                 if (_strTimestamp != value)

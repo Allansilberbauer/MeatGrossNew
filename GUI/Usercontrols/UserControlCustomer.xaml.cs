@@ -43,15 +43,16 @@ namespace GUI.Usercontrols
             {
                 biz.editOrnewCustomer = new ClassCustomer(biz.SelectedCustomer);
                 UCCE = new UserControlCustomerEdit(biz, gridLeft, gridRight);
-                gridLeft.Children.Add(UCCE); 
-            }
-
+                gridLeft.Children.Add(UCCE);
+                biz.isEnabled = false;
+            }            
         }
         private void buttonNewCustomer_Click(object sender, RoutedEventArgs e)
         {
             biz.editOrnewCustomer = new ClassCustomer();
             UCCE = new UserControlCustomerEdit(biz, gridLeft, gridRight);
             gridLeft.Children.Add(UCCE);
+            biz.isEnabled = false;
         }
     }
 }

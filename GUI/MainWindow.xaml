@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid x:Name="LeftGrid"
               Grid.Column="0" 
-              IsEnabled="{Binding isEnabled}"/>
+              />
         <Grid x:Name="RightGrid"
               Grid.Column="1" 
               IsEnabled="{Binding isEnabled}"/>

@@ -28,6 +28,10 @@ namespace Repository
                 if (_orderMeat != value)
                 {
                     _orderMeat = value;
+                    if (orderCustomer != null)
+                    {
+                        CalculateAllPrices();
+                    }
                 }
                 Notify("orderMeat");
             }
@@ -41,6 +45,10 @@ namespace Repository
                 if (_orderCustomer != value)
                 {
                     _orderCustomer = value;
+                    if (orderMeat != null)
+                    {
+                        CalculateAllPrices();
+                    }
                 }
                 Notify("orderCustomer");
             }
@@ -53,8 +61,19 @@ namespace Repository
             {
                 if (_orderWeight != value)
                 {
-                    _orderWeight = value;
-                }
+                    if (orderCustomer != null && orderMeat != null)
+                    {                                                
+                        if (value > orderMeat.stock)
+                        {
+                            _orderWeight = orderMeat.stock;
+                        }
+                        else
+                        {
+                            _orderWeight = value;
+                        }
+                        CalculateAllPrices();                         
+                    }
+                }               
                 Notify("orderWeight");
             }
         }
@@ -114,7 +133,15 @@ namespace Repository
 
         private void CalculateAllPrices()
         {
+            int orderAmount = orderWeight;
+            double pricePerUnitDKK = orderMeat.price;
 
+
+            orderPriceDKK = orderAmount * pricePerUnitDKK;
+            priceDKK = (orderAmount * pricePerUnitDKK).ToString();
+
+            orderPriceValuta = (pricePerUnitDKK * orderCustomer.country.valutaRate) * orderAmount;
+            priceValuta = ((pricePerUnitDKK * orderCustomer.country.valutaRate) * orderAmount).ToString();
         }
     }
 }

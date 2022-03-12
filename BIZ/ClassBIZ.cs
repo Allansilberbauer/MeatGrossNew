@@ -49,7 +49,6 @@ namespace BIZ
                 Notify("listCustomer");
             }
         }
-
         public List<ClassCountry> listCountry
         {
             get { return _listCountry; }
@@ -62,7 +61,6 @@ namespace BIZ
                 Notify("listCountry");
             }
         }
-
         public List<ClassMeat> listMeat
         {
             get { return _listMeat; }
@@ -75,7 +73,6 @@ namespace BIZ
                 Notify("listMeat");
             }
         }
-
         public ClassApiRates apiRates
         {
             get { return _apiRates; }
@@ -88,7 +85,6 @@ namespace BIZ
                 Notify("apiRates");
             }
         }
-
         public ClassCustomer SelectedCustomer
         {
             get { return _SelectedCustomer; }
@@ -106,7 +102,6 @@ namespace BIZ
                 Notify("SelectedCustomer");
             }
         }
-
         public ClassCustomer editOrnewCustomer
         {
             get { return _editOrnewCustomer; }
@@ -119,7 +114,6 @@ namespace BIZ
                 Notify("editOrnewCustomer");
             }
         }
-
         public ClassOrder order
         {
             get { return _order; }
@@ -132,7 +126,6 @@ namespace BIZ
                 Notify("order");
             }
         }
-
         public bool isEnabled
         {
             get { return _isEnabled; }
@@ -150,7 +143,7 @@ namespace BIZ
 
         public void UpdateListCustomer()
         {
-            
+            listCustomer = cmgdb.GetAllCustomerFromDB();
         }
         public async Task<ClassApiRates> GetApiRates()
         {
@@ -165,10 +158,10 @@ namespace BIZ
             listCustomer = cmgdb.GetAllCustomerFromDB();
             listMeat = cmgdb.GetAllCMeatFromDB();
         }
-        public  int SaveNewCustomer()
+        public int SaveNewCustomer()
         {
             int newID = cmgdb.SaveNewCustomerInDB(editOrnewCustomer);
-            SetUpListCustomer();
+            UpdateListCustomer();
             foreach (ClassCustomer customer in listCustomer)
             {
                 if (customer.id == newID)

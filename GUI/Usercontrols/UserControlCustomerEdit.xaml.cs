@@ -39,6 +39,7 @@ namespace GUI
         {
             biz.editOrnewCustomer = new ClassCustomer();
             gridLeft.Children.Remove(this);
+            biz.isEnabled = true;
         }
         private void buttonSaveCustomer_Click(object sender, RoutedEventArgs e)
         {
@@ -51,6 +52,7 @@ namespace GUI
                 biz.SaveNewCustomer();
             }
             gridLeft.Children.Remove(this);
+            biz.isEnabled = true;
         }
 
         private void SaveCustomerData()
