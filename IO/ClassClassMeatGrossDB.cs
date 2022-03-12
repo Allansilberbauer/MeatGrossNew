@@ -89,6 +89,27 @@ namespace IO
         {
             List<ClassMeat> res = new List<ClassMeat>();
 
+            try
+            {
+                DataTable dt = DbReturnDataTable("SELECT * FROM Meat ");
+                foreach (DataRow row in dt.Rows)
+                {
+                    ClassMeat cm = new ClassMeat();
+
+                    cm.id = Convert.ToInt32(row["id"]);
+                    cm.typeOfMeat = row["TypeOfMeat"].ToString();
+                    cm.stock = (int)row["Stock"];                    
+                    cm.price = Convert.ToDouble(row["Price"]);
+                    cm.priceTimestamp = Convert.ToDateTime(row["PriceTimeStamp"]);
+
+                    res.Add(cm);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
             return res;
         }
         public int SaveNewCustomerInDB(ClassCustomer inClassCustomer)

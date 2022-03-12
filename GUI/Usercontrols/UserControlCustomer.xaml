@@ -58,7 +58,7 @@
                   SelectedValuePath="companyName"
                   DisplayMemberPath="companyName"
                   SelectedValue="{Binding listCustomer.companyName }"
-                  SelectedItem="{Binding SelectedCustomer}" />
+                  SelectedItem="{Binding SelectedCustomer}"/>
 
         <TextBox Grid.Row="2"
                  Grid.Column="1"

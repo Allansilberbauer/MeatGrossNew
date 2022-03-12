@@ -28,7 +28,7 @@ namespace Repository
 
         public string strTimestamp
         {
-            get { return _strTimestamp; }
+            get { return priceTimestamp.ToShortDateString(); }
             set
             {
                 if (_strTimestamp != value)

@@ -44,6 +44,7 @@ namespace BIZ
                 if (_listCustomer != value)
                 {
                     _listCustomer = value;
+                    
                 }
                 Notify("listCustomer");
             }
@@ -96,6 +97,11 @@ namespace BIZ
                 if (_SelectedCustomer != value)
                 {
                     _SelectedCustomer = value;
+                    if (SelectedCustomer != null && SelectedCustomer.id > 0)
+                    {
+                        order.orderCustomer = SelectedCustomer;
+                    }
+                    
                 }
                 Notify("SelectedCustomer");
             }
@@ -156,7 +162,8 @@ namespace BIZ
         }
         public void SetUpListCustomer()
         {
-            listCustomer = cmgdb.GetAllCustomerFromDB();           
+            listCustomer = cmgdb.GetAllCustomerFromDB();
+            listMeat = cmgdb.GetAllCMeatFromDB();
         }
         public  int SaveNewCustomer()
         {
