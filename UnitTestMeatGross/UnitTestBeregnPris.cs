@@ -15,6 +15,7 @@ namespace UnitTestMeatGross
             ClassOrder co = new ClassOrder();
             co.orderMeat = new ClassMeat();
             co.orderCustomer = new ClassCustomer();
+
             co.orderCustomer.country.valutaRate = 0.1300D;
             co.orderMeat.price = 10;
             co.orderMeat.stock = 10;
