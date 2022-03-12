@@ -94,6 +94,38 @@ namespace IO
         public int SaveNewCustomerInDB(ClassCustomer inClassCustomer)
         {
             int res = 0;
+           
+            string sqlQuery = "INSERT INTO Customer " +
+                "(ContactName, Addres, ZipCity, Mail, Phone, ComanyName, Country) " +
+                "VALUES " +
+                "(@ContactName, @address, @zipCity, @mail, @phone, @ComanyName, @Country) " +
+                "SELECT SCOPE_IDENTITY()";
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.Add("@ContactName", SqlDbType.NVarChar).Value = inClassCustomer.contactName;
+                    cmd.Parameters.Add("@address", SqlDbType.NVarChar).Value = inClassCustomer.address;
+                    cmd.Parameters.Add("@zipCity", SqlDbType.NVarChar).Value = inClassCustomer.zipCity;
+                    cmd.Parameters.Add("@mail", SqlDbType.NVarChar).Value = inClassCustomer.mail;
+                    cmd.Parameters.Add("@phone", SqlDbType.NVarChar).Value = inClassCustomer.phone;
+                    cmd.Parameters.Add("@ComanyName", SqlDbType.NVarChar).Value = inClassCustomer.companyName;
+                    cmd.Parameters.Add("@Country", SqlDbType.Int).Value = inClassCustomer.country.id;
+                    
+
+                    OpenDB();
+                    res = Convert.ToInt32(cmd.ExecuteScalar()); 
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                CloseDB();
+            }
 
             return res;
         }
@@ -104,11 +136,10 @@ namespace IO
                 "SET ContactName = @ContactName, " +
                 "Addres = @address, " +
                 "ZipCity = @zipCity, " +
-                "Mail = @email," +
+                "Mail = @mail," +
                 "Phone = @phone, " +
                 "ComanyName = @ComanyName, " +
-                "Country = @Country, " +
-                "isActive = @isActive " +
+                "Country = @Country " +               
                 "WHERE id = @id ";
 
             try
@@ -118,7 +149,7 @@ namespace IO
                     cmd.Parameters.Add("@ContactName", SqlDbType.NVarChar).Value = inClassCustomer.contactName;
                     cmd.Parameters.Add("@address", SqlDbType.NVarChar).Value = inClassCustomer.address;
                     cmd.Parameters.Add("@zipCity", SqlDbType.NVarChar).Value = inClassCustomer.zipCity;                  
-                    cmd.Parameters.Add("@email", SqlDbType.NVarChar).Value = inClassCustomer.mail;
+                    cmd.Parameters.Add("@mail", SqlDbType.NVarChar).Value = inClassCustomer.mail;
                     cmd.Parameters.Add("@phone", SqlDbType.NVarChar).Value = inClassCustomer.phone;
                     cmd.Parameters.Add("@ComanyName", SqlDbType.NVarChar).Value = inClassCustomer.companyName;
                     cmd.Parameters.Add("@Country", SqlDbType.Int).Value = inClassCustomer.country.id;                   

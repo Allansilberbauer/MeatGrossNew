@@ -48,7 +48,7 @@ namespace GUI
             }
             else
             {
-
+                biz.SaveNewCustomer();
             }
             gridLeft.Children.Remove(this);
         }

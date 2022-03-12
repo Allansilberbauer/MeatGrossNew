@@ -160,9 +160,16 @@ namespace BIZ
         }
         public  int SaveNewCustomer()
         {
-            int res = 0;
-
-            return res;
+            int newID = cmgdb.SaveNewCustomerInDB(editOrnewCustomer);
+            SetUpListCustomer();
+            foreach (ClassCustomer customer in listCustomer)
+            {
+                if (customer.id == newID)
+                {
+                    SelectedCustomer = customer;
+                }
+            }
+            return newID;
         }
         public void UpdateCustomer()
         {
