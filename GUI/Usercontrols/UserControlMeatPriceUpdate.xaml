@@ -1,0 +1,291 @@
+﻿<UserControl x:Class="GUI.UserControlMeatPriceUpdate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="370" d:DesignWidth="425" Loaded="UserControl_Loaded"
+             >
+    <Grid x:Name="MainGrid"
+        Background="AntiqueWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Content="Kød type"
+               Grid.Row="0"
+               HorizontalAlignment="Center"
+               FontWeight="Medium"
+               Margin="4"
+               VerticalAlignment="Top" />
+        <Label Content="Pris"
+               Grid.Column="1"
+               HorizontalAlignment="Center"
+               FontWeight="Medium"
+               Margin="4"
+               VerticalAlignment="Top" />
+        <Label Content="Ny pris"
+               Grid.Column="2"
+               HorizontalAlignment="Center"
+               FontWeight="Medium"
+               Margin="4"
+               VerticalAlignment="Top" />
+        <Label Content="Tilfør lager"
+               Grid.Column="3"
+               HorizontalAlignment="Center"
+               FontWeight="Medium"
+               Margin="4"
+               VerticalAlignment="Top" />
+
+        <!--list af kød-->
+        <Label Content="Gris"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.Row="1"
+               FontSize="16" />
+        <Label Content="Kalv"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.Row="2"
+               FontSize="16" />
+        <Label Content="Okse"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.Row="3"
+               FontSize="16" />
+        <Label Content="Kylling"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.Row="4"
+               FontSize="16" />
+        <Label Content="Kalkun"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.Row="5"
+               FontSize="16" />
+        <Label Content="Hest"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="0"
+               Grid.Row="6"
+               FontSize="16" />
+        <!--Pris Labels-->
+        <Label Content="54,00"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="1"
+               FontSize="16" />
+        <Label Content="54,00"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="2"
+               FontSize="16" />
+        <Label Content="54,00"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="3"
+               FontSize="16" />
+        <Label Content="54,00"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="4"
+               FontSize="16" />
+        <Label Content="54,00"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="5"
+               FontSize="16" />
+        <Label Content="54,00"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="6"
+               FontSize="16" />
+        <!--Sæt pris via TextBox's-->
+        <TextBox Text="0"
+                 HorizontalAlignment="Center"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="65"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="2"
+                 Grid.Row="1" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Center"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="65"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="2"
+                 Grid.Row="2" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Center"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="65"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="2"
+                 Grid.Row="3" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Center"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="65"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="2"
+                 Grid.Row="4" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Center"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="65"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="2"
+                 Grid.Row="5" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Center"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="65"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="2"
+                 Grid.Row="6" />
+        <!--Sæt TilFør Lager via TextBox's-->
+        <TextBox Text="0"
+                 HorizontalAlignment="Left"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="85"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="1" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Left"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="85"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="2" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Left"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="85"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="3" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Left"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="85"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="4" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Left"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="85"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="5" />
+        <TextBox Text="0"
+                 HorizontalAlignment="Left"
+                 TextAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="85"
+                 Height="25"
+                 FontSize="16"
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="6" />
+        <!--Gem knapper-->
+        <Button Content="Gem"
+                Grid.Column="4"
+                Grid.Row="1"
+                Height="30"
+                Width="70" 
+                x:Name="PrisGris" Click="PrisGris_Click"/>
+        <Button Content="Gem"
+                Grid.Column="4"
+                Grid.Row="2"
+                Height="30"
+                Width="70" 
+                x:Name="PrisKalv" Click="PrisKalv_Click"/>
+        <Button Content="Gem"
+                Grid.Column="4"
+                Grid.Row="3"
+                Height="30"
+                Width="70"
+                x:Name="PrisOkse" Click="PrisOkse_Click"/>
+        <Button Content="Gem"
+                Grid.Column="4"
+                Grid.Row="4"
+                Height="30"
+                Width="70"
+                x:Name="PrisKylling" Click="PrisKylling_Click"/>
+        <Button Content="Gem"
+                Grid.Column="4"
+                Grid.Row="5"
+                Height="30"
+                Width="70" 
+                x:Name="PrisKalkun" Click="PrisKalkun_Click"/>
+        <Button Content="Gem"
+                Grid.Column="4"
+                Grid.Row="6"
+                Height="30"
+                Width="70" 
+                x:Name="PrisHest" Click="PrisHest_Click"/>
+        <!--Exit Update knap-->
+        <Button Content="EXIT UPDATE"
+                Grid.Column="1"
+                Grid.Row="7"
+                Grid.ColumnSpan="3"
+                Height="35" 
+                x:Name="ButtonExitUpdate" Click="ButtonExitUpdate_Click"/>
+    </Grid>
+</UserControl>
