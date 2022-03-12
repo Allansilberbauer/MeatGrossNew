@@ -144,7 +144,7 @@ namespace BIZ
 
         public void UpdateListCustomer()
         {
-
+            
         }
         public async Task<ClassApiRates> GetApiRates()
         {
@@ -166,7 +166,17 @@ namespace BIZ
         }
         public void UpdateCustomer()
         {
+            cmgdb.UpdateCustomerInDB(editOrnewCustomer);
 
+            SelectedCustomer.contactName = editOrnewCustomer.contactName;
+            SelectedCustomer.companyName = editOrnewCustomer.companyName;
+            SelectedCustomer.address = editOrnewCustomer.address;
+            SelectedCustomer.zipCity = editOrnewCustomer.zipCity;
+            SelectedCustomer.mail = editOrnewCustomer.mail;
+            SelectedCustomer.phone = editOrnewCustomer.phone;
+            SelectedCustomer.country = editOrnewCustomer.country;
+
+            editOrnewCustomer = new ClassCustomer();
         } 
         public void SaveSaleInDB()
         {

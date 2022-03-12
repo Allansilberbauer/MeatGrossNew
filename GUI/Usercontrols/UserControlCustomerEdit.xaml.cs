@@ -42,7 +42,15 @@ namespace GUI
         }
         private void buttonSaveCustomer_Click(object sender, RoutedEventArgs e)
         {
+            if (biz.editOrnewCustomer.id > 0)
+            {
+                biz.UpdateCustomer();
+            }
+            else
+            {
 
+            }
+            gridLeft.Children.Remove(this);
         }
 
         private void SaveCustomerData()

@@ -99,7 +99,44 @@ namespace IO
         }
         public void UpdateCustomerInDB(ClassCustomer inClassCustomer)
         {
+            
+            string sqlQuery = "UPDATE Customer " +
+                "SET ContactName = @ContactName, " +
+                "Addres = @address, " +
+                "ZipCity = @zipCity, " +
+                "Mail = @email," +
+                "Phone = @phone, " +
+                "ComanyName = @ComanyName, " +
+                "Country = @Country, " +
+                "isActive = @isActive " +
+                "WHERE id = @id ";
 
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.Add("@ContactName", SqlDbType.NVarChar).Value = inClassCustomer.contactName;
+                    cmd.Parameters.Add("@address", SqlDbType.NVarChar).Value = inClassCustomer.address;
+                    cmd.Parameters.Add("@zipCity", SqlDbType.NVarChar).Value = inClassCustomer.zipCity;                  
+                    cmd.Parameters.Add("@email", SqlDbType.NVarChar).Value = inClassCustomer.mail;
+                    cmd.Parameters.Add("@phone", SqlDbType.NVarChar).Value = inClassCustomer.phone;
+                    cmd.Parameters.Add("@ComanyName", SqlDbType.NVarChar).Value = inClassCustomer.companyName;
+                    cmd.Parameters.Add("@Country", SqlDbType.Int).Value = inClassCustomer.country.id;                   
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = inClassCustomer.id;
+
+                    OpenDB();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                CloseDB();
+            }
         }
         public void UpdateMeatVolume(ClassOrder inOrder)
         {
