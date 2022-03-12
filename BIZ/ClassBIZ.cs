@@ -22,7 +22,7 @@ namespace BIZ
         private List<ClassCustomer> _listCustomer;
         public ClassBIZ() 
         {
-            isEnabled = true;
+            isEnabled = false;
             order = new ClassOrder();
             editOrnewCustomer = new ClassCustomer();
             SelectedCustomer = new ClassCustomer();
@@ -96,6 +96,7 @@ namespace BIZ
                     if (SelectedCustomer != null && SelectedCustomer.id > 0)
                     {
                         order.orderCustomer = SelectedCustomer;
+                        isEnabled = true;
                     }
                     
                 }
