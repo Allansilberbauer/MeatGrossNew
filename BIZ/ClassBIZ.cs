@@ -12,7 +12,8 @@ namespace BIZ
         ClassJsonWepApiCall cowa = new ClassJsonWepApiCall();
         ClassClassMeatGrossDB cmgdb = new ClassClassMeatGrossDB(); 
 
-        private bool _isEnabled;
+        private bool _isEnabledRight;
+        private bool _isEnabledLeft;
         private ClassOrder _order;
         private ClassCustomer _editOrnewCustomer;
         private ClassCustomer _SelectedCustomer;
@@ -22,7 +23,8 @@ namespace BIZ
         private List<ClassCustomer> _listCustomer;
         public ClassBIZ() 
         {
-            isEnabled = false;
+            isEnabledRight = false;
+            isEnabledLeft = true;
             order = new ClassOrder();
             editOrnewCustomer = new ClassCustomer();
             SelectedCustomer = new ClassCustomer();
@@ -96,7 +98,7 @@ namespace BIZ
                     if (SelectedCustomer != null && SelectedCustomer.id > 0)
                     {
                         order.orderCustomer = SelectedCustomer;
-                        isEnabled = true;
+                        isEnabledRight = true;
                     }
                     
                 }
@@ -127,16 +129,34 @@ namespace BIZ
                 Notify("order");
             }
         }
-        public bool isEnabled
+        /// <summary>
+        /// kontrolere om højre UserControl er enabled eller ikke 
+        /// </summary>
+        public bool isEnabledRight
         {
-            get { return _isEnabled; }
+            get { return _isEnabledRight; }
             set
             {
-                if (_isEnabled != value)
+                if (_isEnabledRight != value)
                 {
-                    _isEnabled = value;
+                    _isEnabledRight = value;
                 }
-                Notify("isEnabled");
+                Notify("isEnabledRight");
+            }
+        }
+        /// <summary>
+        /// kontrolere om venstre UserControl er enabled eller ikke 
+        /// </summary>
+        public bool isEnabledLeft
+        {
+            get { return _isEnabledLeft; }
+            set
+            {
+                if (_isEnabledLeft != value)
+                {
+                    _isEnabledLeft = value;
+                }
+                Notify("isEnabledLeft");
             }
         }
 

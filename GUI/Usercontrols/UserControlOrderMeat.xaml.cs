@@ -45,6 +45,7 @@ namespace GUI.Usercontrols
         {
             UCMPU = new UserControlMeatPriceUpdate(biz, gridLeft, gridRight);
             gridRight.Children.Add(UCMPU);
+            biz.isEnabledLeft = false;
         }
         private void SaveCustomerData()
         {

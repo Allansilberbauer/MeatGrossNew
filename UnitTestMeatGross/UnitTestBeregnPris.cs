@@ -28,5 +28,25 @@ namespace UnitTestMeatGross
             //Assert
             Assert.AreEqual(ExpRes, co.orderPriceValuta);
         }
+        [TestMethod]
+        public void TestMethodPriceInDKK()
+        {
+            // Arange
+            ClassOrder co = new ClassOrder();
+            co.orderMeat = new ClassMeat();
+            co.orderCustomer = new ClassCustomer();
+
+            co.orderCustomer.country.valutaRate = 1D;
+            co.orderMeat.price = 10;
+            co.orderMeat.stock = 10;
+
+            double ExpRes = 100D;
+
+            // Act
+            co.orderWeight = 10;
+
+            //Assert
+            Assert.AreEqual(ExpRes, co.orderPriceValuta);
+        }
     }
 }

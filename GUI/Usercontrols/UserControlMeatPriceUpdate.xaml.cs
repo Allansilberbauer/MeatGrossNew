@@ -71,6 +71,7 @@ namespace GUI
         private void ButtonExitUpdate_Click(object sender, RoutedEventArgs e)
         {
             gridRight.Children.Remove(this);
+            biz.isEnabledLeft = true;
         }
     }
 }
