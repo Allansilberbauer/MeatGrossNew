@@ -7,6 +7,9 @@ using Repository;
 using IO;
 namespace BIZ
 {
+    /// <summary>
+    /// Denne klasse repræsenter forretningslogikken i applikationen
+    /// </summary>
     public class ClassBIZ : ClassNotify
     {
         ClassJsonWepApiCall cowa = new ClassJsonWepApiCall();
