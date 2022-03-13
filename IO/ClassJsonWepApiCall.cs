@@ -17,7 +17,10 @@ namespace IO
         {
 
         }
-
+        /// <summary>
+        /// henter data fra en web api vert tiende minut og returner en Deserializet værtion af dataen  
+        /// </summary>
+        /// <returns>ClassApiRates</returns>
         public async Task<ClassApiRates> GetRatesFromWebApi()
         {
             ClassApiRates res = new ClassApiRates();
@@ -27,7 +30,7 @@ namespace IO
                 while (true)
                 {
                     string strJson = await GetURLContentsAsync("https://openexchangerates.org/api/latest.json?app_id=815cc079ffe94c1588c276bb286366a8&base=USD");
-                    res = JsonConvert.DeserializeObject<ClassApiRates>(strJson);
+                    res = JsonConvert.DeserializeObject<ClassApiRates>(strJson); // tager stringen fra og overføre ald data den kan matche med propertys i en metode
 
                     await Task.Delay(600000);
                 }
@@ -38,13 +41,19 @@ namespace IO
             }
             return res;
         }
-
+        /// <summary>
+        ///  henter data fra en given api og lagere det i en string
+        /// </summary>
+        /// <param name="inURL">string</param>
+        /// <returns>string</returns>
         private async Task<string> GetURLContentsAsync(string inURL)
         {
             string res = "";
+            //MemonryStream giver mulighed for at læse og skrive data fra eksterne midler 
             MemoryStream content = new MemoryStream();
-            var webReq = (HttpWebRequest)WebRequest.Create(inURL);
 
+            //HttpWebRequest giver mulig for at oprette forbindelse til en server der HTTP
+            var webReq = (HttpWebRequest)WebRequest.Create(inURL);
             try
             {
                 using (WebResponse response = await webReq.GetResponseAsync())

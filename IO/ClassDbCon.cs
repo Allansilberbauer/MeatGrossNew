@@ -19,8 +19,8 @@ namespace IO
         /// </summary>
         public ClassDbCon()
         {
-           // _connectionString = @"";
-           // con = new SqlConnection(_connectionString);
+             _connectionString = @"";
+             con = new SqlConnection(_connectionString);
         }
         /// <summary>
         /// overloaded constructor hvor connectionstring initialiseres via en overført parameter
