@@ -8,7 +8,7 @@
              d:DesignHeight="370" d:DesignWidth="425" Loaded="UserControl_Loaded"
              >
     <Grid x:Name="MainGrid"
-        Background="AntiqueWhite">
+        Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />

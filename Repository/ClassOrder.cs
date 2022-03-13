@@ -28,6 +28,8 @@ namespace Repository
                 if (_orderMeat != value)
                 {
                     _orderMeat = value;
+
+                    //tjekker at der er valgt en Customer inden der bliver regnet på prisen
                     if (orderCustomer != null)
                     {
                         CalculateAllPrices();
@@ -36,7 +38,6 @@ namespace Repository
                 Notify("orderMeat");
             }
         }
-
         public ClassCustomer orderCustomer
         {
             get { return _orderCustomer; }
@@ -45,6 +46,8 @@ namespace Repository
                 if (_orderCustomer != value)
                 {
                     _orderCustomer = value;
+
+                    //tjekker at der er valgt en kødtype inden der bliver regnet på prisen
                     if (orderMeat != null)
                     {
                         CalculateAllPrices();
@@ -53,7 +56,6 @@ namespace Repository
                 Notify("orderCustomer");
             }
         }
-
         public int orderWeight
         {
             get { return _orderWeight; }
@@ -61,6 +63,7 @@ namespace Repository
             {
                 if (_orderWeight != value)
                 {
+                    //tjekker at både Customer og kødtype er blevet valgt inden der kan skrives ned i orderWeight
                     if (orderCustomer != null && orderMeat != null)
                     {                                                
                         if (value > orderMeat.stock)
@@ -77,7 +80,6 @@ namespace Repository
                 Notify("orderWeight");
             }
         }
-
         public double orderPriceDKK
         {
             get { return _orderPriceDKK; }
@@ -90,7 +92,6 @@ namespace Repository
                 Notify("orderPriceDKK");
             }
         }
-
         public double orderPriceValuta
         {
             get { return _orderPriceValuta; }
@@ -104,6 +105,9 @@ namespace Repository
             }
         }
 
+        /// <summary>
+        /// holder prisen i Danske Kroner til binding i GUI
+        /// </summary>
         public string priceDKK
         {
             get { return _priceDKK; }
@@ -116,7 +120,9 @@ namespace Repository
                 Notify("priceDKK");
             }
         }
-
+        /// <summary>
+        /// holder prisen i kundens valte valuta til binding i GUI
+        /// </summary>
         public string priceValuta
         {
             get { return _priceValuta; }
@@ -130,7 +136,9 @@ namespace Repository
             }
         }
 
-
+        /// <summary>
+        /// udregner prisen af Kundens køb i danske kroner og kundens valte valuta
+        /// </summary>
         private void CalculateAllPrices()
         {
             int orderAmount = orderWeight;

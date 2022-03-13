@@ -37,7 +37,9 @@ namespace BIZ
             SetUpListCountry();
         }
         
-
+        /// <summary>
+        /// holder alle Customer fra databasen
+        /// </summary>
         public List<ClassCustomer> listCustomer
         {
             get { return _listCustomer; }
@@ -51,6 +53,9 @@ namespace BIZ
                 Notify("listCustomer");
             }
         }
+        /// <summary>
+        /// holder alle lande fra databasen
+        /// </summary>
         public List<ClassCountry> listCountry
         {
             get { return _listCountry; }
@@ -63,6 +68,9 @@ namespace BIZ
                 Notify("listCountry");
             }
         }
+        /// <summary>
+        /// holder alla kødtyper fra databasen
+        /// </summary>
         public List<ClassMeat> listMeat
         {
             get { return _listMeat; }
@@ -75,6 +83,7 @@ namespace BIZ
                 Notify("listMeat");
             }
         }
+
         public ClassApiRates apiRates
         {
             get { return _apiRates; }
@@ -87,6 +96,10 @@ namespace BIZ
                 Notify("apiRates");
             }
         }
+
+        /// <summary>
+        /// holder Customer dataen af den valgte købere.
+        /// </summary>
         public ClassCustomer SelectedCustomer
         {
             get { return _SelectedCustomer; }
@@ -95,16 +108,21 @@ namespace BIZ
                 if (_SelectedCustomer != value)
                 {
                     _SelectedCustomer = value;
+
+                    //checker om der er blevet selected en customer
                     if (SelectedCustomer != null && SelectedCustomer.id > 0)
                     {
-                        order.orderCustomer = SelectedCustomer;
+                        order.orderCustomer = SelectedCustomer;   //overføre en indstands af SelectedCustomer over i order.orderCustomer
                         isEnabledRight = true;
-                    }
-                    
+                    }                 
                 }
                 Notify("SelectedCustomer");
             }
         }
+
+        /// <summary>
+        /// midlertidig holding af customer data til redigering og oprætning af købere
+        /// </summary>
         public ClassCustomer editOrnewCustomer
         {
             get { return _editOrnewCustomer; }
@@ -117,6 +135,10 @@ namespace BIZ
                 Notify("editOrnewCustomer");
             }
         }
+
+        /// <summary>
+        /// holder dataen til håntering og skabning af ordre
+        /// </summary>
         public ClassOrder order
         {
             get { return _order; }
@@ -129,6 +151,7 @@ namespace BIZ
                 Notify("order");
             }
         }
+
         /// <summary>
         /// kontrolere om højre UserControl er enabled eller ikke 
         /// </summary>
@@ -161,11 +184,17 @@ namespace BIZ
         }
 
 
-
+        /// <summary>
+        /// opdatere listCustomer med alle Customer fra databasen 
+        /// </summary>
         public void UpdateListCustomer()
         {
             listCustomer = cmgdb.GetAllCustomerFromDB();
         }
+        /// <summary>
+        /// gør et kald på GetRatesFromWebApi() i IO og returner dets return værdi
+        /// </summary>
+        /// <returns>ClassApiRates</returns>
         public async Task<ClassApiRates> GetApiRates()
         {
             ClassApiRates res = new ClassApiRates();
@@ -174,11 +203,19 @@ namespace BIZ
 
             return res;
         }
+        /// <summary>
+        /// opdatere listCustomer med alle Customer fra databasen og 
+        /// opdatere listMeat med alle kødtyper fra databasen
+        /// </summary>
         public void SetUpListCustomer()
         {
             listCustomer = cmgdb.GetAllCustomerFromDB();
             listMeat = cmgdb.GetAllCMeatFromDB();
         }
+        /// <summary>
+        /// tilføger ny customer til databasen (baseret på hvad der står i editOrnewCustomer) og der efter initialisere SelectedCustomer til den nye customer
+        /// </summary>
+        /// <returns>int</returns>
         public int SaveNewCustomer()
         {
             int newID = cmgdb.SaveNewCustomerInDB(editOrnewCustomer);
@@ -192,6 +229,9 @@ namespace BIZ
             }
             return newID;
         }
+        /// <summary>
+        /// opdatere den valte customer (baseret på hvad der står i editOrnewCustomer) til databasen og SelectedCustomer
+        /// </summary>
         public void UpdateCustomer()
         {
             cmgdb.UpdateCustomerInDB(editOrnewCustomer);
@@ -206,6 +246,7 @@ namespace BIZ
 
             editOrnewCustomer = new ClassCustomer();
         } 
+
         public void SaveSaleInDB()
         {
 
@@ -215,6 +256,9 @@ namespace BIZ
 
         }
 
+        /// <summary>
+        /// opdatere listCountry med alle lande fra database
+        /// </summary>
         private void SetUpListCountry()
         {
             listCountry = cmgdb.GetAllCountryFromDB();
